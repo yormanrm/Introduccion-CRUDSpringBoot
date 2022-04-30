@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Main</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <a th:href="@{/add}">Crear Persona</a>
+        
+        <div th:if="${people != null and !people.empty}">
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="p : ${people}">
+                    <td th:text="${p.name}"></td>
+                    <td th:text="${p.lastname}"></td>
+                    <td th:text="${p.email}"></td>
+                    <td th:text="${p.phone}"></td>
+                    <td><a th:href="@{/modify/} + ${p.idPerson}" th:text="Editar"/></td>
+                    <td><a th:href="@{/delete/} + ${p.idPerson}" th:text="Eliminar"/></td>
+                    <!--QUERY PARAM <td><a th:href="@{/delete(idPerson = ${p.idPerson})}" th:text="Eliminar"/></td>-->
+                </tr>
+            </table>
+        </div>
+        
+        <div th:if="${people == null or people.empty}">
+            <h3>Lista PEOPLE Esta Vacia</h3>
+        </div>
+        
+    </body>
+</html>
