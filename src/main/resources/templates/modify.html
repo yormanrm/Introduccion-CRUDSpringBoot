@@ -14,14 +14,17 @@
             <input type="hidden" name="idPerson" th:field="*{idPerson}"/>
             <label for="name">Nombre: </label>
             <input type="text" name="name" th:field="*{name}"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Campo Vacio</span>
             <br>
             
             <label for="lastname">Apellido: </label>
             <input type="text" name="lastname" th:field="*{lastname}"/>
+            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Campo Vacio</span>
             <br>
             
             <label for="email">Email: </label>
-            <input type="email" name="email" th:field="*{email}"/>
+            <input type="text" name="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Campo Vacio</span>
             <br>
             
             <label for="phone">Telefono: </label>
